@@ -119,4 +119,8 @@
     <param name="APP_ID" value="1209697875721621" />
     <param name="APP_NAME" value="SneakerAlert" />
     </gap:plugin>
+    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
+        <param name="APP_ID" value="1209697875721621" />
+        <param name="APP_NAME" value="SneakerAlert" />
+    </gap:plugin>
 </widget>
