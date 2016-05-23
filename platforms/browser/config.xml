@@ -6,12 +6,12 @@
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>SNKR.ALRT</name>
+    <name>Hello World</name>
     <description>
-        Sneaker Alert Application
+        Hello World sample application that responds to the deviceready event.
     </description>
-    <author email="support@alfafusion.com" href="http://sneakeralert.com">
-        Alfafusion Team
+    <author email="support@phonegap.com" href="http://phonegap.com">
+        PhoneGap Team
     </author>
     <content src="index.html" />
     <icon src="icon.png" />
@@ -22,6 +22,10 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
+        <param name="APP_ID" value="1209697875721621" />
+        <param name="APP_NAME" value="SneakerAlert" />
+    </gap:plugin>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
 </widget>
