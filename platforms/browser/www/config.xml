@@ -1,20 +1,19 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.alfafusion.snkralrt" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.alfafusion.snkralrt" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Camera">
         <param name="browser-package" value="Camera" />
     </feature>
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>Sneaker Alert</name>
+    <name>SNKR ALRT</name>
     <description>
-        SNKRALRT application that responds to the deviceready event.
+        A Sneakers App
     </description>
-    <author email="support@snkralrt.com" href="http://sneakeralert.com">
+    <author email="kenneth.froyalde23@gmail.com" href="http://alfafusion.com">
         Alfafusion Team
     </author>
     <content src="index.html" />
-    <icon src="icon.png" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -22,10 +21,9 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
-        <param name="APP_ID" value="1209697875721621" />
-        <param name="APP_NAME" value="SneakerAlert" />
-    </gap:plugin>
+    <icon src="icon.png" />
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="android-minSdkVersion" value="14" />
+    <preference name="StatusBarStyle" value="default" />
+    <preference name="FadeSplashScreenDuration" value="300" />
+    <preference name="phonegap-version" value="cli-6.1.0" />
 </widget>

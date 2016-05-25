@@ -84,7 +84,6 @@ $$(document).on('deviceready', function deviceIsReady() {
 });
 
 
-
-$$(document).on('click', '.profile-link', function profileLink() {
+/*$$(document).on('click', '.profile-link', function profileLink() {
 mainView.router.loadContent($$('#myPage').html());
-});
+});*/
