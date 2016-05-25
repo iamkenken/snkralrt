@@ -1,64 +1,155 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
-    <!-- Good default declaration:
-    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+  <!--
+    Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+    Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
         * Enable inline JS: add 'unsafe-inline' to default-src
-        * Enable eval(): add 'unsafe-eval' to default-src
-    * Create your own at http://cspisawesome.com
     -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+  <!-- Removing 'unsafe-eval'. If needed, I will figure out a way around it -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com https://api.spotify.com 'unsafe-eval' 'unsafe-inline' ws://*; style-src 'self' 'unsafe-inline'; media-src *; img-src * data:">
 
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>SNKR ALRT</title>
-    <script scr="phonegap.js"></script>
-    <script src="cdv-plugin-fb-connect.js"></script> 
-    <script src="facebook-js-sdk.js"></script> 
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" href="js/font-awesome-4.5.0/css/font-awesome.min.css" />
+
+  <title>SNKR ALRT</title>
 </head>
 
-<body>
-    <div class="app">
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">
-            <a target="_blank" href="#" onclick="login()" style="text-decoration: none"><button>Login using Facebook</button></a>
-            </p>
+<body class="theme-blue">
+
+<div class="statusbar-overlay"></div>
+
+<!-- Panels overlay-->
+<div class="panel-overlay"></div>
+<!-- Left panel with cover effect-->
+<div class="panel panel-left panel-cover">
+<!--<div class="content-block">-->
+<!-- <div class="content-block-title"></div> -->
+<div class="list-block">
+  <ul>
+    <li>
+      <a href="#" data-template="profile" class="profile-link item-content list-panel-all close-panel item-link">
+        <div class="item-inner">
+          <div class="item-title">Profile</div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="setting-link item-content list-panel-all close-panel item-link">
+        <div class="item-inner">
+          <div class="item-title">Settings</div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="logout-link item-content list-panel-all close-panel item-link">
+        <div class="item-inner">
+          <div class="item-title">Logout</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
+</div>
+
+<!-- Views -->
+<div class="views">
+<!-- Your main view, should have "view-main" class-->
+<div class="view view-main">
+<!-- Top Navbar-->
+<div class="navbar">
+    <!-- Home Navbar -->
+    <div class="navbar-inner" data-paged="index">
+    <div class="left sliding">
+      <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars color-white"></i></a>
+    </div>
+    <div class="center color-white">SNKR ALRT</div>
+    </div>
+</div>
+<!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+<div class="pages navbar-through toolbar-through">
+    <!-- Home Page-->
+    <div class="page" data-page="index">
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="content-block">
+        <div class="row">
+            <!-- Each "cell" has col-[widht in percents] class -->
+            <div class="col-100 text-center">
+                <img src="img/h.png" width="90">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-100 text-center">
+            <img src="img/s.png" width="220">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-100 text-center">
+            <img src="img/x.png" width="90">
+            </div>
+        </div> 
+      </div>
+    </div>
+    </div>
+</div>
+<!-- Bottom Toolbar-->
+<!-- div class="toolbar">
+  <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
+</div> -->
+</div>
+</div>
+
+<script type="text/template7" id="profile">
+    <!-- Dynamic navbar for iOS theme -->
+    {{#if @global.ios}}
+    <div class="navbar">
+        <!-- Profile Navbar -->
+        <div class="navbar-inner" data-paged="profile">
+        <div class="left sliding">
+          <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars color-white"></i></a>
+        </div>
+        <div class="center color-white">Profile</div>
         </div>
     </div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
+    {{/if}}
+    <div class="page" data-page="profile">
+        <!-- Fixed navbar for Material theme -->
+        {{#if @global.material}}
+        <div class="navbar">
+        <!-- Home Navbar -->
+        <div class="navbar-inner" data-paged="index">
+        <div class="left sliding">
+          <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars color-white"></i></a>
+        </div>
+        <div class="center color-white">Profile</div>
+        </div>
+        </div>
+        {{/if}}
+        <div class="page-content">
+          <div class="content-block">
+              <p>Profile</p>
+          </div>
+        </div>
+    </div>
+</script>  
+
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/MSOpenTech/winstore-jscompat.js"></script>
+<script type="text/javascript" src="js/framework7/js/framework7.min.js"></script>
+<script type="text/javascript" src="js/init-styles.js"></script>
+<script type="text/javascript" src="js/my-app.js"></script>
 </body>
 
 </html>
